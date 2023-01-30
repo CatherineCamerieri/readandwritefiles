@@ -8,9 +8,9 @@ writer = csv.writer(outfile, delimiter=",")
 
 fieldnames = next(customer_file)
 first_row = [fieldnames[1], fieldnames[2], fieldnames[4]]
-# fieldnames = ["First Name, Last Name, Country"]
 writer.writerow(first_row)
 
+i = 0
 for row in customer_file:
     cust_id = row[0]
     first_name = row[1]
@@ -18,10 +18,12 @@ for row in customer_file:
     city = row[3]
     country = row[4]
     phone = row[5]
+    i += 1
 
     new_row = [first_name, last_name, country]
-    # new_row = new_row.rstrip("\n")
     writer.writerow(new_row)
+
+print("Total number of customers read:", i)
 
 
 customers.close()
